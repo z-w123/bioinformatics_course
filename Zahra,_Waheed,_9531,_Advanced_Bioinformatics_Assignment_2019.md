@@ -142,7 +142,7 @@ plot(x = cars$speed,
 abline(a = -17.5791, b = 3.9324, col="blue")
 ```
 
-![](Zahra,_Waheed,_9531,_Advanced_Bioinformatics_Assignment_2019_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+![](https://github.com/z-w123/bioinformatics_course/blob/master/unnamed-chunk-6-1.png)
 
 
 ## Task 7
@@ -188,6 +188,6 @@ x <- cars$new_speed
 ggplot(cars, aes(new_speed,dist)) + geom_point() + geom_smooth(method="lm", formula="y~0+x+I(x^2)") + labs(title= "Average reaction time for driver to start breaking", x="speed (seconds)", y="breaking distance (feet)") + theme_bw() + theme(plot.title = element_text(hjust=0.5))
 ```
 
-![](Zahra,_Waheed,_9531,_Advanced_Bioinformatics_Assignment_2019_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+![](https://github.com/z-w123/bioinformatics_course/blob/master//unnamed-chunk-8-1.png)
 
 
