@@ -1,0 +1,101 @@
+---
+title: "Advanced Bioinformatics 2019 Assessment"
+author: "p1806425"
+date: "2 May 2019"
+output:
+  html_document:
+    keep_md: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Task 1
+
+```{r, comment=NA}
+sum(5:55)
+```
+
+## Task 2
+```{r, comment=NA}
+sumfun <- function(n) {
+  sum(5:n)
+}
+
+sumfun(10)
+sumfun(20)
+sumfun(100)
+```
+
+## Task 3
+```{r}
+Fibonacci <- numeric(12)
+Fibonacci[1] <- Fibonacci[2] <- 1
+for (i in 3:12) { Fibonacci[i] <- Fibonacci[i - 2] + Fibonacci[i - 1]}
+
+print("First 12 Fibonacci numbers are:")
+print(Fibonacci)
+```
+
+## Task 4
+```{r, comment=NA}
+library(ggplot2)
+Gear <- as.factor((mtcars[,10]))
+
+ggplot(mtcars, aes(x=Gear, y=mpg, fill=Gear)) + geom_boxplot() 
+
+```
+
+
+## Task 5
+```{r, comment=NA}
+distance <- lm(dist~speed, data = cars)
+summary(distance)
+```
+fitted slope = 3.9324  
+
+intercept of the line = -17.5791  
+
+standard deviation for speed = 0.4155  
+
+standard deviation for distance = 6.7584  
+
+
+
+##Task 6
+```{r}
+plot(x = cars$speed,                          
+     y = cars$dist,
+     col="blueviolet",
+     pch=20,
+     cex=2.0,
+     xlab = "Speed (mph)",
+     ylab = "Breaking Distance (feet)",
+     main = "Linear Relationship between Speed and Breaking Distance")
+abline(a = -17.5791, b = 3.9324, col="blue")
+```
+
+
+## Task 7
+```{r}
+library(ggplot2)
+data(cars)
+new_speed <- cars$speed * (5280/3600)
+lm_1 <- lm(dist ~ 0 + new_speed + I(new_speed^2), cars)
+
+summary(lm_1)
+```
+Yes the results are reasonable. 0.84479 is a realistic average reaction speed for the driver to start breaking.
+
+
+## Task 7 continued
+```{r}
+y <- cars$dist
+x <- cars$new_speed
+
+ggplot(cars, aes(new_speed,dist)) + geom_point() + geom_smooth(method="lm", formula="y~0+x+I(x^2)") + labs(title= "Average reaction time for driver to start breaking", x="speed (seconds)", y="breaking distance (feet)") + theme_bw() + theme(plot.title = element_text(hjust=0.5))
+
+```
+
+
